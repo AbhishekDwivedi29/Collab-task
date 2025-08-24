@@ -55,6 +55,7 @@ const { userId, email } = req.query;
 
     res.json(user);
   } catch (err) {
+      console.error('Error getting user info:', err);
     res.status(500).json({ message: "Failed to fetch user", error: err.message });
   }
 };
@@ -86,7 +87,7 @@ exports.addBoardToUser = async (req, res) => {
 
     res.status(200).json({ message: 'Board ID added', boardIds: user.boardIds });
   } catch (err) {
-    // console.error('Error updating user boardIds:', err);
+    console.error('Error updating user boardIds:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

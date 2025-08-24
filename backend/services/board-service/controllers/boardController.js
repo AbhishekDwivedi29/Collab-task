@@ -47,7 +47,7 @@ exports.createBoard = async (req, res) => {
     }
     res.status(201).json(board);
   } catch (err) {
-    // console.error("Board creation error:", err.message);
+    console.error("Board creation error:", err.message);
     res.status(500).json({ message: "Board creation failed", error: err.message });
   }
 };
