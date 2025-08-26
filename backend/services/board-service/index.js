@@ -52,6 +52,10 @@ const io = new Server(server, {
     handleSocketConnection(socket, io);
   });
 
+
+app.get("/", (req, res) => {
+  res.send("board Service is Live ");
+});
 app.use('/api/boards', boardRoutes);
 app.use('/api/columns', columnRoutes);
 app.use('/api/tasks', taskRoutes);
