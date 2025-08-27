@@ -1,17 +1,17 @@
 # Collab-task
 
 ---
-## 🚀 Deployment
+##  Deployment
 
 The *Collab-task* system is deployed across cloud platforms for modular scalability and real-time performance:
 
 - **Frontend**: Hosted on [Vercel](https://collab-task-five.vercel.app/), delivering a responsive UI and socket-integrated dashboard.
-- **Backend Microservices**: Deployed on [Render], with separate services for user authentication and board/task management.
+- **Backend Microservices**: Deployed on Render, with separate services for user authentication and board/task management.
 
 This setup ensures secure communication, real-time updates, and production-grade reliability.
 
 
-## 📚 Table of Contents
+##  Table of Contents
 
 1. [Project Overview](#Project-Overview)  
 2. [Tech Stack](#Tech-Stack)  
@@ -43,8 +43,7 @@ This setup ensures secure communication, real-time updates, and production-grade
 -  Modular microservices for boards, columns, and tasks
 -  Real-time socket events for task and column creation
 -  Notification system with local persistence and dropdown UI
--  Clean architecture with recruiter-ready documentation and observability hooks
--  board-level room isolation for efficient socket traffic 
+-  Board-level room isolation for efficient socket traffic 
 
 
 ---
@@ -57,7 +56,7 @@ The system is architected as two independently deployable microservices: the *Us
 
 ###  User Service
 
-The User Service acts as the authentication and identity backbone of the system. It handles secure user registration and login using JWT tokens, enabling stateless access across both HTTP routes and WebSocket connections. Once authenticated, users can retrieve their profile data, which includes personal details and the boards they’re associated with. Internally, the service also manages board linkage—whenever a user creates or is invited to a board, this service updates their record to reflect that association. It operates independently from board logic, ensuring clean separation of concerns and making it easy to scale or refactor without affecting task or collaboration features. The service also includes internal authorization middleware that validates trusted service-to-service communication, allowing backend modules to interact securely without exposing sensitive endpoints to the public. Overall, the User Service is designed to be lightweight, secure, and extensible, forming the foundation for personalized, authenticated experiences across the app.
+The User Service acts as the authentication and identity backbone of the system. It handles secure user registration and login using JWT tokens, enabling stateless access across both HTTP routes and WebSocket connections. Once authenticated, users can retrieve their profile data, which includes personal details and the boards they’re associated with. Internally, the service also manages board linkage , whenever a user creates or is invited to a board, this service updates their record to reflect that association. It operates independently from board logic, ensuring clean separation of concerns and making it easy to scale or refactor without affecting task or collaboration features. The service also includes internal authorization middleware that validates trusted service-to-service communication, allowing backend modules to interact securely without exposing sensitive endpoints to the public. Overall, the User Service is designed to be lightweight, secure, and extensible, forming the foundation for personalized, authenticated experiences across the app.
 
 ---
 
@@ -76,8 +75,6 @@ The socket layer is tightly integrated with the Board Service. Events such as ta
 To surface these events to users, the system includes a lightweight *notification layer* built with Zustand. Notifications are stored in localStorage for session persistence and displayed via a dropdown UI triggered by a bell icon. New alerts are highlighted with a red badge, and users can mark them as seen by interacting with the dropdown. The system currently supports task and column creation events, but is designed to be easily extended to include comments, mentions, or activity logs.
 
 This architecture ensures that users receive instant feedback without polling, and that the real-time layer remains secure, scoped, and performant. It’s a clean separation of concerns: sockets handle delivery, Zustand manages state, and the UI renders it all with minimal overhead.
-
-Absolutely, Abhishek. Based on your full codebase—from route definitions to socket handling and notification logic—here’s a comprehensive breakdown of the *system architecture* and *flow of operations*. This is written to reflect production-grade clarity, suitable for documentation, onboarding, or showcasing to recruiters.
 
 ---
 
@@ -125,9 +122,9 @@ Absolutely, Abhishek. Based on your full codebase—from route definitions to so
 
 *Abhishek Dwivedi*  
 
-Software Engineer focused on building secure, scalable systems with clean architecture and real-time capabilities. Skilled in backend development, REST APIs, microservices, and frontend integration.
-Tech Stack: Node.js, Express.js, MongoDB, React.js, Zustand, Tailwind CSS
-Tools: Git, GitHub, VSCode, Postman
+Software Engineer focused on building secure, scalable systems with clean architecture and real-time capabilities. Skilled in backend development, REST APIs, microservices, and frontend integration.     
+ Tech Stack: Node.js, Express.js, MongoDB, React.js, Zustand, Tailwind CSS
+ Tools: Git, GitHub, VSCode, Postman
 
  
 
