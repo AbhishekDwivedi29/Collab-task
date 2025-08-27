@@ -1,12 +1,36 @@
 # Collab-task
 
 ---
+## 🚀 Deployment
 
-## 📌 Project Overview
+The *Collab-task* system is deployed across cloud platforms for modular scalability and real-time performance:
+
+- **Frontend**: Hosted on [Vercel](https://collab-task-five.vercel.app/), delivering a responsive UI and socket-integrated dashboard.
+- **Backend Microservices**: Deployed on [Render], with separate services for user authentication and board/task management.
+
+This setup ensures secure communication, real-time updates, and production-grade reliability.
+
+
+## 📚 Table of Contents
+
+1. [Project Overview](#Project-Overview)  
+2. [Tech Stack](#Tech-Stack)  
+3. [Key Features](#Key-Features)  
+4. [Microservice Overview](#Microservice-Overview)  
+   - [User Service](#user-service)  
+   - [Board Service](#board-service)  
+5. [Real-Time Communication & Notification System](#Real-Time-Communication-&-Notification-System)  
+6. [Flow of Operation](#Flow-of-Operation)  
+7. [Design Principles](#Design-Principles)  
+8. [Author](#Author)
+
+
+
+##  Project-Overview
 
 *Collab-task* is a real-time collaborative task management system inspired by Kanban workflows. It enables users to create boards, manage tasks across columns, and receive live updates through socket-driven notifications.
 
-### 🔧 Tech Stack
+###  Tech-Stack
 - *Backend*: Node.js, Express, Socket.IO
 - *Frontend*: React, Zustand, TailwindCSS
 - *Auth*: JWT-based authentication
@@ -14,35 +38,36 @@
 - *State & Notifications*: Zustand + LocalStorage
 - *Real-time Layer*: Socket.IO with board-level room isolation
 
-### ✨ Key Features
-- 🔐 Secure user authentication and board access control
-- 🧩 Modular microservices for boards, columns, and tasks
-- 📡 Real-time socket events for task and column creation
-- 🔔 Notification system with local persistence and dropdown UI
-- 🧠 Clean architecture with recruiter-ready documentation and observability hooks
+###  Key-Features
+-  Secure user authentication and board access control
+-  Modular microservices for boards, columns, and tasks
+-  Real-time socket events for task and column creation
+-  Notification system with local persistence and dropdown UI
+-  Clean architecture with recruiter-ready documentation and observability hooks
+-  board-level room isolation for efficient socket traffic 
 
 
 ---
 
-## 🧱 Microservice Overview
+##  Microservice-Overview
 
 The system is architected as two independently deployable microservices: the *User Service* and the *Board Service*. Each service owns its domain logic, communicates via authenticated APIs, and contributes to a scalable backend that supports real-time collaboration and secure user management.
 
 ---
 
-### 👤 User Service
+###  User Service
 
 The User Service acts as the authentication and identity backbone of the system. It handles secure user registration and login using JWT tokens, enabling stateless access across both HTTP routes and WebSocket connections. Once authenticated, users can retrieve their profile data, which includes personal details and the boards they’re associated with. Internally, the service also manages board linkage—whenever a user creates or is invited to a board, this service updates their record to reflect that association. It operates independently from board logic, ensuring clean separation of concerns and making it easy to scale or refactor without affecting task or collaboration features. The service also includes internal authorization middleware that validates trusted service-to-service communication, allowing backend modules to interact securely without exposing sensitive endpoints to the public. Overall, the User Service is designed to be lightweight, secure, and extensible, forming the foundation for personalized, authenticated experiences across the app.
 
 ---
 
-### 🗂 Board Service
+###  Board Service
 
 The Board Service powers the collaborative core of the application. It manages the lifecycle of boards, columns, and tasks—allowing users to create boards, invite collaborators, organize tasks into columns, and track progress in real time. Each board acts as a container for columns, which in turn hold tasks that can be assigned, moved, and commented on. All operations are protected by JWT-based middleware to ensure that only authorized users can interact with board data. The service also integrates a real-time socket layer using Socket.IO, enabling users to join board-specific rooms and receive live updates when tasks or columns are created. Socket connections are authenticated during handshake, and scoped events are emitted to relevant board rooms, ensuring efficient and secure collaboration. Designed with modular controllers and domain-driven boundaries, the Board Service is scalable, maintainable, and ready for production-grade extensions like activity logs, mentions, or task updates.
 
 ---
 
-## 📡 Real-Time Communication & Notification System
+##  Real-Time Communication & Notification System
 
 The system uses *Socket.IO* to enable real-time collaboration across boards. When a user logs in, their JWT token is passed during the socket handshake to authenticate the connection. Once verified, the user is joined to rooms corresponding to the boards they belong to. This room-based isolation ensures that events like task creation or column updates are scoped only to relevant users, preventing cross-board noise and optimizing bandwidth.
 
@@ -56,7 +81,7 @@ Absolutely, Abhishek. Based on your full codebase—from route definitions to so
 
 ---
 
-## 🔄 Flow of Operation
+##  Flow of Operation
 
 #### 1. *User Registration & Login*
 - A user registers or logs in via the User Service.
@@ -90,15 +115,25 @@ Absolutely, Abhishek. Based on your full codebase—from route definitions to so
 
 ---
 
-### 🧠 Design Principles
+###  Design Principles
 
 - *Domain Isolation*: Each service owns its logic and data, enabling independent scaling and deployment.
 - *Room-Based Socket Architecture*: Scoped real-time updates per board for efficient collaboration.
 
 
-## 👨‍💻 Author
+##   Author
 
 *Abhishek Dwivedi*  
-Backend Architect | Microservices Specialist | Payment Systems Debugger
+
+Software Engineer focused on building secure, scalable systems with clean architecture and real-time capabilities. Skilled in backend development, REST APIs, microservices, and frontend integration.
+Tech Stack: Node.js, Express.js, MongoDB, React.js, Zustand, Tailwind CSS
+Tools: Git, GitHub, VSCode, Postman
+
+ 
+
+
+
+> Connect  on [LinkedIn](https://www.linkedin.com/in/abhishek-d-5a217425b?trk=public_profile_browsemap&originalSubdomain=in) or explore more on [GitHub](https://github.com/AbhishekDwivedi29).
+
 
 
